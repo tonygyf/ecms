@@ -60,6 +60,8 @@ const handleLogin = async () => {
         if (response.data.success) {
           ElMessage.success('登录成功')
           localStorage.setItem('token', response.data.token)
+          // 存入用户信息（转成字符串）
+          localStorage.setItem('user', JSON.stringify(response.data.user));
           router.push('/home')
         } else {
           ElMessage.error(response.data.message || '登录失败')
