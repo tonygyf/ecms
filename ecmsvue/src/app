@@ -1,0 +1,48 @@
+<template>
+  <div id="app">
+    <el-menu
+        :default-active="$route.path"
+        class="el-menu-vertical-demo"
+        @select="handleSelect"
+        background-color="#f5f7fa"
+        text-color="#333"
+        active-text-color="#20a0ff"
+    >
+      <el-menu-item index="/" router>首页</el-menu-item>
+      <el-menu-item index="/products" router>产品管理</el-menu-item>
+      <el-menu-item index="/orders" router>订单管理</el-menu-item>
+    </el-menu>
+    <div class="content">
+      <router-view />
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  methods: {
+    handleSelect(index) {
+      this.$router.push(index);
+    }
+  }
+}
+</script>
+
+<style>
+#app {
+  display: flex;
+}
+
+.el-menu-vertical-demo {
+  width: 220px; /* 增加侧边栏宽度 */
+  height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  max-width: 1200px; /* 设置最大宽度 */
+  margin: 0 auto; /* 居中对齐 */
+}
+</style>
