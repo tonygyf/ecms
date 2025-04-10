@@ -7,10 +7,14 @@
           @select="handleSelect"
           mode="horizontal"
       >
-        <el-menu-item index="">首页</el-menu-item>
+        <el-menu-item index="home">首页</el-menu-item>
         <el-menu-item index="products">产品管理</el-menu-item>
         <el-menu-item index="orders">订单管理</el-menu-item>
 
+        <!-- 登出按钮放最右边 -->
+        <div class="logout-wrapper">
+          <el-menu-item index="logout" @click="handleLogout">登出</el-menu-item>
+        </div>
       </el-menu>
     </div>
   </el-header>
@@ -18,17 +22,21 @@
 
 <script>
 export default {
-  name: 'AppNavbar', // 修改组件名称为多词
+  name: 'AppNavbar',
   data() {
     return {
-      activeIndex: 'home' // 默认激活的菜单项
+      activeIndex: 'home'
     };
   },
   methods: {
     handleSelect(index) {
+      if (index === 'logout') return; // 防止重复执行登出逻辑
       this.activeIndex = index;
-      // 跳转到对应的页面
-      this.$router.push({ name: index }); // 假设使用 Vue Router
+      this.$router.push({ name: index });
+    },
+    handleLogout() {
+      localStorage.removeItem('token');
+      this.$router.push('/login');
     }
   }
 };
@@ -36,10 +44,19 @@ export default {
 
 <style scoped>
 .navbar {
-  background-color: #409eff; /* Element Plus 的主题颜色 */
+  background-color: #409eff;
   color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .menu {
-  line-height: 60px; /* 使菜单项垂直居中 */
+  line-height: 60px;
+  width: 100%;
+}
+
+.logout-wrapper {
+  margin-left: auto;
 }
 </style>
