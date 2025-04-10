@@ -1,0 +1,3 @@
+com\ecms\entity\Product.class
+com\ecms\EcmsApplication.class
+com\ecms\entity\Product$ProductStatus.class
