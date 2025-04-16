@@ -69,7 +69,7 @@ upstream     https://github.com/tonygyf/ecms (push)
 
 ```
 ➜  git fetch upstream
-➜  git pull upstream master
+➜  git pull upstream main
 ```
 
 7）Push 到远程仓库
@@ -92,7 +92,7 @@ upstream     https://github.com/tonygyf/ecms (push)
 
 添加必要的评论信息，然后单击 Create pull request 按钮。
 
-### 在这里进行测试
+### 在这里进行提交测试
 
 @tonygyf  : Hello
 
